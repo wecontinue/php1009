@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="result"></div>
+<button  onclick="startTime()">开始</button>
+<button onclick="stopTime()">停止</button>
+<script type="text/javascript" src="digui.js"></script>
+<script type="text/javascript">
+
+
+    /**
+     * 该功能用来设置result中的时间
+     *
+     * 1. 超过指定的时间执行一次函数
+     * var timer = window.setTimeout(函数,1000) : 时间的单位为毫秒
+     *                  函数: 函数的名字.
+     * window.clearTimeout(timer):
+     *
+     * 2. 超过指定的时间周期性执行函数
+     * var timer = window.setInterval(函数,1000) : 时间的单位为毫秒
+     * window.clearInterval(timer);
+     *
+     *
+     * 经验之谈:
+     *   在开始之间都要清空.
+     */
+
+    function setTime(){
+        var date = new Date();
+        B('result').innerHTML = date.toLocaleString();
+    }
+
+//    window.setTimeout(setTime,1000);
+    //>>1.timer是一个int类型的值, 表示定时任务的一个唯一编号
+    var timer = window.setInterval(setTime,1000);
+
+
+    function stopTime(){
+         //将定时任务清除
+         window.clearInterval(timer);
+    }
+
+    function startTime(){
+        //>>1.先停止
+        stopTime();
+        //>>2.再开始
+        timer = window.setInterval(setTime,1000);
+    }
+
+
+</script>
+</body>
+</html>
