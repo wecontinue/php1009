@@ -23,45 +23,43 @@
     <div class="main-div">
         <form method="post" action="<?php echo U();?>">
             <table cellspacing="1" cellpadding="3" width="100%">
-                <tr>
+                                <tr>
                     <td class="label">供应商名称</td>
                     <td>
-                        <input type="text" name="name" maxlength="60" value="<?php echo ($name); ?>"/>
-                        <span class="require-field">*</span>
+                         <input type='text' name='name' maxlength='60' value='<?php echo ($name); ?>'/>                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
-                    <td class="label">供应商描述</td>
-                    <td>
-                        <textarea name="intro" cols="60" rows="4"><?php echo ($intro); ?></textarea>
-                    </td>
-                </tr>
-                <tr>
+                                <tr>
                     <td class="label">排序</td>
                     <td>
-                        <input type="text" name="sort" maxlength="40" size="15" value="<?php echo ((isset($sort) && ($sort !== ""))?($sort):20); ?>"/>
+                         <input type='text' name='sort' maxlength='60' value='<?php echo ((isset($sort) && ($sort !== ""))?($sort):20); ?>'/>                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
-                    <td class="label">是否显示</td>
+                                <tr>
+                    <td class="label">供应商简介</td>
                     <td>
-                        <input type="radio" class="status" name="status" value="1"/> 是
-                        <input type="radio" class="status" name="status" value="0"/> 否
+                        <textarea name='intro' maxlength='60' row='4' ><?php echo ($intro); ?></textarea>                        <span class="require-field">*</span>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2" align="center"><br/>
+                                <tr>
+                    <td class="label">状态</td>
+                    <td>
+                         <input type='radio' name='status' class='status'  value='1'/>是 <input type='radio' name='status' class='status'  value='0'/>否                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+                                <tr>
+                    <td colspan="2" align="center"><br />
                         <input type="hidden" name="id" value="<?php echo ($id); ?>"/>
-                        <input type="submit" class="button ajax-post" value=" 确定 "/>
-                        <input type="reset" class="button" value=" 重置 "/>
+                        <input type="submit" class="button ajax-post" value=" 确定 " />
+                        <input type="reset" class="button" value=" 重置 " />
                     </td>
-                </tr>
+               </tr>
             </table>
         </form>
     </div>
 
 <script type="text/javascript" src="http://admin.shop.com:8080/Public/Admin/js/jquery-1.11.2.js"></script>
-<script type="text/javascript" src="http://admin.shop.com:8080/Public/Admin/layer/layer.js"></script>
+<script type="text/javascript" src="http://admin.shop.com:8080//Public/Admin/layer/layer.js"></script>
 <script type="text/javascript" src="http://admin.shop.com:8080/Public/Admin/js/jquery.form.js"></script>
 <script type="text/javascript" src="http://admin.shop.com:8080/Public/Admin/js/common.js"></script>
 <!--预留添加js位置-->

@@ -3,25 +3,19 @@
     <div class="list-div" id="listDiv">
         <table cellpadding="3" cellspacing="1">
             <tr>
-                <th><input type="checkbox" class="selectall" name="all">ID</th>
-                <th>品牌名称</th>
-                <th>品牌网址</th>
-                <th>品牌LOGO</th>
-                <th>品牌描述</th>
-                <th>排序</th>
-                <th>是否显示</th>
-                <th>操作</th>
+            <th>ID<input type="checkbox" class="selectall" name="all"></th>
+                            <th>品牌名称</th>
+                               <th>品牌网址</th>
+                               <th>品牌LOGO</th>
+                               <th>排序</th>
+                               <th>品牌简介</th>
+                               <th>状态</th>
+                               <th>操作</th>
             </tr>
             <volist name="rows" id="row">
                 <tr>
                     <td width="30px">{$row.id}<input type="checkbox" class="ids" name="id[]" value="{$row.id}"/></td>
-                    <td class="center">{$row.name}</td>
-                    <td class="center">{$row.url}</td>
-                    <td class="center">{$row.logo}</td>
-                    <td align="center">{$row.intro}</td>
-                    <td align="center">{$row.sort}</td>
-                    <td align="center"><a class='ajax-get' href="{:U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']))}"><img src="__IMG__/{$row.status}.gif"/></a></td>
-                    <td align="center">
+                     <td class="first-cell">{$row.name}</td><td align="center">{$row.url}</td><td align="center">{$row.logo}</td><td align="center">{$row.sort}</td><td align="center">{$row.intro}</td><td align="center"><a class='ajax-get' href="{:U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']))}"><img src="__IMG__/{$row.status}.gif"/></a></td>                    <td align="center">
                         <a href="{:U('edit',array('id'=>$row['id']))}" title="编辑">编辑</a>
                         <a class='ajax-get' href="{:U('changeStatus',array('id'=>$row['id'],'status'=>-1))}" title="移除">移除</a>
                     </td>

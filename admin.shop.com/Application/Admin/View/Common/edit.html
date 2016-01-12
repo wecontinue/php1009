@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="__CSS__/general.css" rel="stylesheet" type="text/css"/>
     <link href="__CSS__/main.css" rel="stylesheet" type="text/css"/>
+    <link href="__CSS__/common.css" rel="stylesheet" type="text/css"/>
     <block name="css"><!--预留添加css位置--></block>
 </head>
 </head>
@@ -30,15 +31,8 @@
 <script type="text/javascript">
     $(function () {
         //选中是否显示
-        $('.status').val([{$status |
-        default
-        = 1
-    }
-    ])
-    ;
-
-    })
-    ;
+        $('.status').val([{$status |default= 1}]);
+    });
 </script>
 </body>
 </html>

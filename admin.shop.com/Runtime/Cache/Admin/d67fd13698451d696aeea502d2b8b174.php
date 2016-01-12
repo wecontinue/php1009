@@ -30,42 +30,37 @@
 <input type="button" class="button ajax-post" url="<?php echo U('changeStatus');?>" value="删除所选">
 <input type="button" class="button ajax-post" url="<?php echo U('changeStatus',array('status'=>1));?>" value="显示所选">
 <input type="button" class="button ajax-post" url="<?php echo U('changeStatus',array('status'=>0));?>" value="隐藏所选">
-
+<!--列表块-->
     <div class="list-div" id="listDiv">
         <table cellpadding="3" cellspacing="1">
             <tr>
-                <th><input type="checkbox" class="selectall" name="all">ID</th>
-                <th>供应商名称</th>
-                <th>供应商描述</th>
-                <th>排序</th>
-                <th>是否显示</th>
-                <th>操作</th>
+            <th>ID<input type="checkbox" class="selectall" name="all"></th>
+                            <th>供应商名称</th>
+                               <th>排序</th>
+                               <th>供应商简介</th>
+                               <th>状态</th>
+                               <th>操作</th>
             </tr>
             <?php if(is_array($rows)): $i = 0; $__LIST__ = $rows;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$row): $mod = ($i % 2 );++$i;?><tr>
                     <td width="30px"><?php echo ($row["id"]); ?><input type="checkbox" class="ids" name="id[]" value="<?php echo ($row["id"]); ?>"/></td>
-                    <td class="center"><?php echo ($row["name"]); ?></td>
-                    <td align="center"><?php echo ($row["intro"]); ?></td>
-                    <td align="center"><?php echo ($row["sort"]); ?></td>
-                    <td align="center"><a class='ajax-get'
-                                          href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']));?>"><img
-                            src="http://admin.shop.com:8080/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
-                    <td align="center">
+                     <td class="first-cell"><?php echo ($row["name"]); ?></td><td align="center"><?php echo ($row["sort"]); ?></td><td align="center"><?php echo ($row["intro"]); ?></td><td align="center"><a class='ajax-get' href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']));?>"><img src="http://admin.shop.com:8080/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>                    <td align="center">
                         <a href="<?php echo U('edit',array('id'=>$row['id']));?>" title="编辑">编辑</a>
                         <a class='ajax-get' href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>-1));?>" title="移除">移除</a>
                     </td>
                 </tr><?php endforeach; endif; else: echo "" ;endif; ?>
             <tr>
                 <td align="right" nowrap="true" colspan="6">
-                    <div id="turn-page" class="page">
-                        <?php echo ($pageHtml); ?>
-                    </div>
+
                 </td>
             </tr>
         </table>
+        <div id="turn-page" class="page">
+            <?php echo ($pageHtml); ?>
+        </div>
     </div>
 
 <script type="text/javascript" src="http://admin.shop.com:8080/Public/Admin/js/jquery-1.11.2.js"></script>
-<script type="text/javascript" src="http://admin.shop.com:8080/Public/Admin/layer/layer.js"></script>
+<script type="text/javascript" src="http://admin.shop.com:8080//Public/Admin/layer/layer.js"></script>
 <script type="text/javascript" src="http://admin.shop.com:8080/Public/Admin/js/common.js"></script>
 <!--预留添加js位置-->
 </body>
