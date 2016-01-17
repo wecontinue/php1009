@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="http://admin.shop.com:8080/Public/Admin/css/general.css" rel="stylesheet" type="text/css"/>
     <link href="http://admin.shop.com:8080/Public/Admin/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="http://admin.shop.com:8080/Public/Admin/css/common.css" rel="stylesheet" type="text/css"/>
     <!--预留添加css位置-->
 </head>
 </head>
@@ -67,12 +68,8 @@
 <script type="text/javascript">
     $(function () {
         //选中是否显示
-        $('.status').val([<?php echo ((isset($status ) && ($status !== ""))?($status ): 1); ?>
-    ])
-    ;
-
-    })
-    ;
+        $('.status').val([<?php echo ((isset($status ) && ($status !== ""))?($status ): 1); ?>]);
+    });
 </script>
 </body>
 </html>

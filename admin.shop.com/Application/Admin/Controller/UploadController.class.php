@@ -1,23 +1,19 @@
 <?php
 namespace Admin\Controller;
-
 use Think\Controller;
 use Think\Upload;
 
 class UploadController extends Controller{
     public function index(){
-        $dir=I('post.dir');//获取浏览器指定的空间（服务）
+        $dir=I('post.dir');//上传的根目录
+        //上传本地配置
         $config=array(
-            'rootPath' =>'./',//保存到upyun的根路径
-            'driver'=>'Upyun',//文件驱动
-            'driverConfig'=>array( //上传驱动配置
-                'host'=>'v0.api.upyun.com',//又拍云服务器
-                 'username' => 'itsource', //又拍操作员用户
-                 'password' => 'itsource', //又拍操作员用户
-                 'bucket' => $dir, //又拍操作员用户
-                 'timeout' => 90, //超时时间
-            ),
+            'rootPath' =>'./Uploads/',//保存根路径
+            'savePath'     => $dir.'/', //保存根目录
+
+
         );
+//        $config=C('UPLOAD_CONFIG');//上传upyun的配置
         $uploader=new Upload($config);
         $result=$uploader->uploadOne($_FILES['Filedata']);
         if($result!==false){
@@ -26,5 +22,6 @@ class UploadController extends Controller{
         }else{
             echo $uploader->getError();
         }
+        exit;
     }
 }

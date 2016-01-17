@@ -42,7 +42,7 @@ $(function(){
 
 
   function showAjaxLayer(data) {
-   //               console.debug(data);//返回数据Object {info: "操作成功!!!", status: 1, url: null}
+                  //console.debug(data);//返回数据Object {info: "操作成功!!!", status: 1, url: null}
       //显示一个提示框
      var icon;
      if (data.status) {      //返回状态值是1 true说明成功 0  false说明失败

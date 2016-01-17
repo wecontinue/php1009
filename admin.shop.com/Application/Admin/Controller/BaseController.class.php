@@ -7,6 +7,8 @@ class BaseController extends Controller{
 
     protected $model;
     //创建模型对象
+    //是否使用 post 传递过来的所有数据
+    protected  $usePostParams=false;
     public function _initialize()
     {
         $this->model = D(CONTROLLER_NAME);
@@ -42,13 +44,14 @@ class BaseController extends Controller{
     {
         if (IS_POST) {//post提交 添加
             if ($this->model->create() !== false) {
-                if ($this->model->add() !== false) {
-                    $this->success('添加成功', U('index'));
+                if ($this->model->add($this->usePostParams?I('post.'):'') !== false) {
+                    $this->success('添加成功', cookie('__forward__'));
                     return;//防止代码向下继续执行
                 }
             }
             $this->error('操作失败!!!' . show_model_error($this->model));
         } else {//get方式提交 展示添加页面
+            $this->_edit_view_before();
             $this->assign('meta_title', '添加' . $this->meta_title);
             $this->display('edit');
         }
@@ -58,7 +61,9 @@ class BaseController extends Controller{
     {
         if (IS_POST) {
             if ($this->model->create() !== false) {//收集请求参数
-                if ($this->model->save() !== false) {//修改
+//                dump($this->model->create());
+//                exit;
+                if ($this->model->save($this->usePostParams?I('post.'):'') !== false) {//修改
                     $this->success('修改成功!!!', cookie('__forward__'));
                     return;
                 }
@@ -68,9 +73,12 @@ class BaseController extends Controller{
             $row = $this->model->find($id);//查询出这条数据
             $this->assign($row);//向叶面分配数据
             $this->assign('meta_title', '编辑'.$this->meta_title);
+            $this->_edit_view_before();
             $this->display('edit');//加载叶面
         }
     }
-
+   protected function _edit_view_before(){
+       //此方法主要用于子类覆盖 如果不需要则没有数据输出给页面
+   }
 
 }

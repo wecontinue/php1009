@@ -27,9 +27,11 @@
         </form>
     </div>
 </block>
+<block name="list_option">
 <input type="button" class="button ajax-post" url="{:U('changeStatus')}" value="删除所选">
 <input type="button" class="button ajax-post" url="{:U('changeStatus',array('status'=>1))}" value="显示所选">
 <input type="button" class="button ajax-post" url="{:U('changeStatus',array('status'=>0))}" value="隐藏所选">
+</block>
 <block name="list"><!--列表块-->
 </block>
 <script type="text/javascript" src="__JS__/jquery-1.11.2.js"></script>

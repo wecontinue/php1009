@@ -37,4 +37,9 @@ class BaseModel extends Model{
         }
         return parent::save($data);
     }
+    //查询出状态大于-1d的  所有数据
+    public function getList($field = "*")
+    {
+        return $this->field($field)->where(array('status' => array('gt', -1)))->select();
+    }
 }

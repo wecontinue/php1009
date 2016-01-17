@@ -74,7 +74,7 @@ class GiiController extends Controller{
               $edit_content=ob_get_clean();
               //拼接生成编辑页面文件夹的路径
               $edit_dir=APP_PATH.'Admin/View/'.$name;
-                if(!isset($edit_dir)){ //检查存放数据表对应的静态页面是否存在 如果不存在递归创建
+                if(!is_dir($edit_dir)){ //检查存放数据表对应的静态页面是否存在 如果不存在递归创建
                    mkdir($edit_dir,0777,true);
                 }
                  $edit_path=$edit_dir.'/edit.html';//合成静态编辑页面路径
@@ -88,7 +88,7 @@ class GiiController extends Controller{
               $index_content=ob_get_clean();
               //拼接生成显示页面文件夹的路径
               $index_dir=APP_PATH.'Admin/View/'.$name;
-              if(!isset($index_dir)){ //检查存放数据表对应的静态页面是否存在 如果不存在递归创建
+              if(!is_dir($index_dir)){ //检查存放数据表对应的静态页面是否存在 如果不存在递归创建
                   mkdir($index_dir,0777,true);
               }
               $index_path=$index_dir.'/index.html';//合成静态显示页面路径

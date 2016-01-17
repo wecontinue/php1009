@@ -1,0 +1,53 @@
+<extend name="Common/index"/>
+<block name="css">
+    <link rel="stylesheet" href="__TREEGRID__/css/jquery.treegrid.css">
+</block>
+<block name="list_option"></block>
+<block name="list"><!--列表块-->
+    <div class="list-div" id="listDiv">
+        <table cellpadding="3" cellspacing="1" class="tree">
+            <tr>
+                <th>分类名称</th>
+                <th>父级分类id</th>
+                <th>分类简介</th>
+                <th>是否显示</th>
+                <th>操作</th>
+            </tr>
+            <volist name="rows" id="row">
+                <tr class="treegrid-{$row.id} <neq name='row.level' value='1'>treegrid-parent-{$row.parent_id}</neq>">
+                    <!--<td width="30px">{$row.id}<input type="checkbox" class="ids" name="id[]" value="{$row.id}"/></td>-->
+                    <td class="first-cell">{$row.name}</td>
+                    <td align="center">{$row.parent_id}</td>
+                    <!--<td align="center">{$row.lft}</td>-->
+                    <!--<td align="center">{$row.rgt}</td>-->
+                    <!--<td align="center">{$row.level}</td>-->
+                    <td align="center">{$row.intro}</td>
+                    <td align="center"><a class='ajax-get'
+                                          href="{:U('changeStatus',array('id'=>$row['id'],'status'=>1-$row['status']))}"><img
+                            src="__IMG__/{$row.status}.gif"/></a></td>
+                    <td align="center">
+                        <a href="{:U('edit',array('id'=>$row['id']))}" title="编辑">编辑</a>
+                        <a class='ajax-get' href="{:U('changeStatus',array('id'=>$row['id'],'status'=>-1))}" title="移除">移除</a>
+                    </td>
+                </tr>
+            </volist>
+            <tr>
+                <td align="right" nowrap="true" colspan="6">
+
+                </td>
+            </tr>
+        </table>
+        <div id="turn-page" class="page">
+            {$pageHtml}
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script type="text/javascript" src="__TREEGRID__/js/jquery.treegrid.js"></script>
+    <!-- 找到现实列表的表格,将表格变为一个树状结构-->
+    <script type="text/javascript">
+        $(function(){
+            $('.tree').treegrid();
+        });
+    </script>
+</block>

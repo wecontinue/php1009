@@ -64,19 +64,21 @@
     <script  type="text/javascript" src="__UPLOADIFY__/jquery.uploadify.min.js"></script>
     <script type="text/javascript">
        $(function(){
-           $("#logo-uploader").uploaderify({
-               height            : 30,
-               width             : 150,
-               'buttontext'     :'上传图片',//指定按钮上的文字
-               'debug'           : true,//是否调试
+           $("#logo-uploader").uploadify({
+               height            : 25,
+               width             : 145,
+               'buttonText'     :'图片上传',//指定按钮上的文字
+//               'debug'           : true,//是否调试
                'fileSizeLimit'  : '1MB',   //文件最大上传大小
                'fileTypeExts'    : '*.gif;*.jpg;*.png',//允许上传的文件格式
-               'formData':{'dir':'brand-logo'},  //上传文件时额外传递过去的参数，告知服务器上的IndexController中的index方法将来将文件上传到哪个文件夹下
+               'formData':{'dir':'Brand'},  //上传文件时额外传递过去的参数，告知服务器上的IndexController中的index方法将来将文件上传到哪个文件夹下
               // 'fileObjName': 'xxx'  上传文件的名字 默认是Filedata
+               'swf'           : '__UPLOADIFY__/uploadify.swf',  //flash插件地址
                'uploader'      : "{:U('Upload/index')}",     //处理上传插件 上传上来的 文件
                'onUploadSuccess' : function(file,data,response){  //data 是响应的上传后的地址
+//                   alert(data);//   brand-logo/2016-01-14/5697086311483.jpg
                    $('.upload-img-box').show();//显示出div
-                   $('.upload-img-box .upload-pre-item img').attr('src','__BRAND__'+data);//找到img标签 ，给属性src赋值
+                   $('.upload-img-box .upload-pre-item img').attr('src','/Uploads/'+data);//找到img标签 ，给属性src赋值
                    $('.logo').val(data);// 将上传后的路径保存到隐藏域中 和表单一起提交 保存在数据库中
                },
                'onUploadError': function(file,errorCode,errorMsg,errorString){

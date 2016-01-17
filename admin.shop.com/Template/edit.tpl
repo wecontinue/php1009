@@ -19,7 +19,7 @@
                                 echo "<textarea name='{$field['field']}' maxlength='60' row='4' >{\${$field['field']}}</textarea>";
                         }elseif($field['field_type']=='radio'){    //当文件类型是raido时
                                    foreach($field['option_values'] as $key=>$val){    // 循环出单选项
-                                 echo " <input type='radio' name='{$field['field']}' class='{$field['field']}'  value='{$key}'/>{$val}";
+                                 echo " <input type='radio'  name='{$field['field']}' class='{$field['field']}'  value='{$key}'/>{$val}";
                                     }
                         }elseif($field['field_type']=='file'){      //当文件类型是file时
                                  echo " <input type='file' name='{$field['field']}'  maxlength='60' />";
